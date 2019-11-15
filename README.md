@@ -3,7 +3,7 @@ Harver iOS Exercise
 
 ## Get started
 
-Checkout this repositary and edit MyPlayground.playground file to try this assesment.
+Checkout this repositary and copy the content of MyPlayground.playground file to https://repl.it/languages/swift and modify the code to complete the assesment tasks as below. Once you completed click on share to share a link to the assesment.
 
 ## Tasks
 
