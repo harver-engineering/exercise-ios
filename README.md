@@ -3,7 +3,45 @@ Harver iOS Exercise
 
 ## Get started
 
-Checkout this repositary and copy the content of MyPlayground.playground file to https://repl.it/languages/swift and modify the code to complete the assesment tasks as below. Once you completed click on share to share a link to the assesment.
+Copy below code to https://repl.it/languages/swift and modify the code to complete the assesment tasks as below. Once you completed click on share to share a link to the assesment.
+
+```
+
+import Foundation
+
+let words = ["start", "citizen", "flour", "circle", "petty", "neck", "seem", "lake", "page", "color", "ceiling", "angle", "agent", "mild", "touch", "bite", "cause", "finance", "greet", "eat", "minor", "echo", "aviation", "baby", "role", "surround", "incapable", "refuse", "reliable", "imperial", "outer", "liability", "struggle", "harsh", "coerce", "front", "strike", "rage", "casualty", "artist", "ex", "transaction", "parking", "plug", "formulate", "press", "kettle", "export", "hiccup", "stem", "exception", "report", "central", "cancer", "volunteer", "professional", "teacher", "relax", "trip", "fountain", "effect", "news", "mark", "romantic", "policy", "contemporary", "conglomerate", "cotton", "happen", "contempt", "joystick", "champagne", "vegetation", "bat", "cylinder", "classify", "even", "surgeon", "slip", "private", "fox", "gravity", "aspect", "hypnothize", "generate", "miserable", "breakin", "love", "chest", "split", "coach", "pound", "sharp", "battery", "cheap", "corpse", "hobby", "mature", "attractive", "rock"]
+
+
+extension Collection where Indices.Iterator.Element == Index {
+    subscript (safe index: Index) -> Iterator.Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
+
+func getRandomWordSync() -> String {
+    let index = randomInRange(min: 0, max: 100)
+    let word = words[index]
+    return word
+}
+
+func getRandomWord(slow: Bool = false, completion:@escaping(_ word: String?, _ error: String?)->()) {
+    let index = randomInRange(min: 0, max: 200)
+    guard let word = words[safe: index] else {
+      return completion(nil, "Fatal error: Index out of range")
+    }
+    
+    let delay = slow ? 500.0 : 0.0
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+        completion(word, nil)
+    }
+}
+
+func randomInRange(min: Int, max: Int) -> Int {
+    return Int.random(in: min ..< max)
+}
+
+```
 
 ## Tasks
 
